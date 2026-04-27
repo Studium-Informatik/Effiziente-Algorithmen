@@ -1,0 +1,45 @@
+=== Evaluation trace for 'add' ===
+$$
+\begin{align*}
+\delta((0, 3, 2, 0, \dots), \text{P add}) = \\
+\delta((0, 3, 2, 0, \dots), x_{ip+1} := x_{ip+2}; \textbf{loop} x_{ip+3} \textbf{do} x_{ip+1} := \text{suc}(x_{ip+1}) \textbf{end}) = \\
+\delta(\delta((0, 3, 2, 0, \dots), x_{ip+1} := x_{ip+2}), \textbf{loop} x_{ip+3} \textbf{do} x_{ip+1} := \text{suc}(x_{ip+1}) \textbf{end}) = \\
+\delta((3, 3, 2, 0, \dots), \textbf{loop} x_{ip+3} \textbf{do} x_{ip+1} := \text{suc}(x_{ip+1}) \textbf{end}) = \\
+\delta((3, 3, 2, 0, \dots), x_{ip+1} := \text{suc}(x_{ip+1}); x_{ip+1} := \text{suc}(x_{ip+1})) = \\
+\delta(\delta((3, 3, 2, 0, \dots), x_{ip+1} := \text{suc}(x_{ip+1})), x_{ip+1} := \text{suc}(x_{ip+1})) = \\
+\delta((4, 3, 2, 0, \dots), x_{ip+1} := \text{suc}(x_{ip+1})) = \\
+(5, 3, 2, 0, \dots) \\
+\end{align*}
+$$
+
+=== Evaluation trace for 'mult' ===
+$$
+\begin{align*}
+\delta((0, 3, 2, 0, \dots), \text{P mult}) = \\
+\delta((0, 3, 2, 0, \dots), x_{ip+1} := 0; \textbf{loop} x_{ip+3} \textbf{do} x_{ip+1} := x_{ip+1} + x_{ip+2} \textbf{end}) = \\
+\delta(\delta((0, 3, 2, 0, \dots), x_{ip+1} := 0), \textbf{loop} x_{ip+3} \textbf{do} x_{ip+1} := x_{ip+1} + x_{ip+2} \textbf{end}) = \\
+\delta((0, 3, 2, 0, \dots), \textbf{loop} x_{ip+3} \textbf{do} x_{ip+1} := x_{ip+1} + x_{ip+2} \textbf{end}) = \\
+\delta((0, 3, 2, 0, \dots), x_{ip+1} := x_{ip+1} + x_{ip+2}; x_{ip+1} := x_{ip+1} + x_{ip+2}) = \\
+\delta(\delta((0, 3, 2, 0, \dots), x_{ip+1} := x_{ip+1} + x_{ip+2}), x_{ip+1} := x_{ip+1} + x_{ip+2}) = \\
+\delta((3, 3, 2, 0, \dots), x_{ip+1} := x_{ip+1} + x_{ip+2}) = \\
+(6, 3, 2, 0, \dots) \\
+\end{align*}
+$$
+
+=== Evaluation trace for 'exp' ===
+$$
+\begin{align*}
+\delta((0, 2, 3, 0, \dots), \text{P exp}) = \\
+\delta((0, 2, 3, 0, \dots), x_{ip+1} := 0; x_{ip+1} := \text{suc}(x_{ip+1}); \textbf{loop} x_{ip+3} \textbf{do} x_{ip+1} := x_{ip+1} \cdot x_{ip+2} \textbf{end}) = \\
+\delta(\delta((0, 2, 3, 0, \dots), x_{ip+1} := 0), x_{ip+1} := \text{suc}(x_{ip+1}); \textbf{loop} x_{ip+3} \textbf{do} x_{ip+1} := x_{ip+1} \cdot x_{ip+2} \textbf{end}) = \\
+\delta((0, 2, 3, 0, \dots), x_{ip+1} := \text{suc}(x_{ip+1}); \textbf{loop} x_{ip+3} \textbf{do} x_{ip+1} := x_{ip+1} \cdot x_{ip+2} \textbf{end}) = \\
+\delta(\delta((0, 2, 3, 0, \dots), x_{ip+1} := \text{suc}(x_{ip+1})), \textbf{loop} x_{ip+3} \textbf{do} x_{ip+1} := x_{ip+1} \cdot x_{ip+2} \textbf{end}) = \\
+\delta((1, 2, 3, 0, \dots), \textbf{loop} x_{ip+3} \textbf{do} x_{ip+1} := x_{ip+1} \cdot x_{ip+2} \textbf{end}) = \\
+\delta((1, 2, 3, 0, \dots), x_{ip+1} := x_{ip+1} \cdot x_{ip+2}; x_{ip+1} := x_{ip+1} \cdot x_{ip+2}; x_{ip+1} := x_{ip+1} \cdot x_{ip+2}) = \\
+\delta(\delta((1, 2, 3, 0, \dots), x_{ip+1} := x_{ip+1} \cdot x_{ip+2}), x_{ip+1} := x_{ip+1} \cdot x_{ip+2}; x_{ip+1} := x_{ip+1} \cdot x_{ip+2}) = \\
+\delta((2, 2, 3, 0, \dots), x_{ip+1} := x_{ip+1} \cdot x_{ip+2}; x_{ip+1} := x_{ip+1} \cdot x_{ip+2}) = \\
+\delta(\delta((2, 2, 3, 0, \dots), x_{ip+1} := x_{ip+1} \cdot x_{ip+2}), x_{ip+1} := x_{ip+1} \cdot x_{ip+2}) = \\
+\delta((4, 2, 3, 0, \dots), x_{ip+1} := x_{ip+1} \cdot x_{ip+2}) = \\
+(8, 2, 3, 0, \dots) \\
+\end{align*}
+$$
